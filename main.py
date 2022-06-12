@@ -17,6 +17,18 @@ def output_dishes():
     for i in range(len(dishes)):
         print(f"\t{str(i+1)}. {dishes[i]}")
 
+def add_dish():
+    name = input("Name of dish: ")
+    dishes.append(str(name))
+
+def remove_dish():
+    remove_index = input("Number of dish to be removed: ")
+
+    if not remove_index.isnumeric() or int(remove_index)-1 < 0 or int(remove_index)-1 >= len(dishes):
+        print("Error: please enter a valid dish")
+    else:
+        dishes.pop(int(remove_index) - 1)
+
 
 # Basic CLI
 def main():
@@ -31,17 +43,9 @@ def main():
         cmd = input("Command: ")
 
         if cmd == "a":
-            name = input("Name of dish: ")
-            dishes.append(str(name))
-
+            add_dish()
         elif cmd == "b":
-            remove_index = input("Number of dish to be removed: ")
-
-            if not remove_index.isnumeric() or int(remove_index)-1 < 0 or int(remove_index)-1 >= len(dishes):
-                print("Error: please enter a valid dish")
-            else:
-                dishes.pop(int(remove_index) - 1)
-
+            remove_dish()
         else:
             break
 
